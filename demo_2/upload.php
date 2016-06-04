@@ -19,7 +19,7 @@
 		move_uploaded_file($file['tmp_name'], $newPath);
 
 
-		$mysqli = new mysqli("localhost", "root", "zhlt1234", "homework");
+		$mysqli = new mysqli("localhost", "****", "****", "homework");
 		$mysqli->set_charset('utf8');
 
 		// 检查是否成功连接数据库

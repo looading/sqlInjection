@@ -4,7 +4,7 @@
 	<title>homework</title>
 </head>
 <body>
-	<form action="/" method="post">
+	<form action="./" method="post">
 		<input type="text" name="name" />
 		<input type="submit" value="查询">
 	</form>
@@ -21,11 +21,11 @@
 	}
 
 
-	$name = $_POST['name'];
+	$name = @$_POST['name'];
 
-	if($name) {
+	if(!empty($name)) {
 			// 建立数据库连接
-			$mysqli = new mysqli("localhost", "root", "zhlt1234", "homework");
+			$mysqli = new mysqli("localhost", "****", "****", "homework");
 			$mysqli->set_charset('utf8');
 
 			// 检查是否成功连接数据库
@@ -36,7 +36,7 @@
 
 
 		 	// 查询
-		 
+		 	$name = addslashes($name);
 			$query = "select * from user where name='$name'";
 		
 			if($result = $mysqli->query($query)) {
@@ -47,7 +47,7 @@
 				
 				
 				// 释放资源
-				$resuly->free();
+				$result->free();
 			} else {
 				echo 'error!';
 			}

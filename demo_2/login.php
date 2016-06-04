@@ -13,11 +13,11 @@
 	$username = @$_POST['username'];
 	$pass = @$_POST['pass'];
 
-	if(empty('username')||empty($pass)) {
+	if(empty($username)||empty($pass)) {
 		redirect('admin.php', '账号密码不能为空！', 2000);
 	}
 
-	$mysqli = new mysqli("localhost", "root", "zhlt1234", "homework");
+	$mysqli = new mysqli("localhost", "****", "****", "homework");
 	$mysqli->set_charset('utf8');
 
 	// 检查是否成功连接数据库
@@ -25,8 +25,8 @@
 	    printf("Connect failed: %s\n", $mysqli->connect_error);
 	    exit();
 	}
-	$query = "SELECT * FROM admin where username='$username' and pass='$pass' ORDER BY id desc";
-
+	$query = "SELECT * FROM admin where username='' or 1=1 #' and pass='$pass' ORDER BY id desc";
+	$query = "SELECT * FROM admin";
 	if($result = $mysqli->query($query)) {
 		$row = $result->fetch_assoc();
 		$result->free();
